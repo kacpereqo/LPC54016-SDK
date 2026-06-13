@@ -3,10 +3,10 @@
 add_compile_options("-DMSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))")
 
 file(GLOB_RECURSE LPC54016_SOURCES
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS/*.c
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device/*.c
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device/*.S
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers/*.c
+    ${CMAKE_SOURCE_DIR}/CMSIS/*.c
+    ${CMAKE_SOURCE_DIR}/device/*.c
+    ${CMAKE_SOURCE_DIR}/device/*.S
+    ${CMAKE_SOURCE_DIR}/drivers/*.c
 )
 
 add_library(LPC54016-SDK ${LPC54016_SOURCES} STATIC)
@@ -25,14 +25,14 @@ target_compile_definitions(LPC54016-SDK PUBLIC
 )
 
 target_include_directories(LPC54016-SDK PUBLIC
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso
+    ${CMAKE_SOURCE_DIR}/CMSIS
+    ${CMAKE_SOURCE_DIR}/device
+    ${CMAKE_SOURCE_DIR}/drivers
+    ${CMAKE_SOURCE_DIR}/MCUXpresso
 )
 
 target_link_libraries(LPC54016-SDK PUBLIC
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_hardabi.a
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_softabi.a
-    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libfro_calib_hardabi.a
+    ${CMAKE_SOURCE_DIR}/MCUXpresso/libpower_hardabi.a
+    ${CMAKE_SOURCE_DIR}/MCUXpresso/libpower_softabi.a
+    ${CMAKE_SOURCE_DIR}/MCUXpresso/libfro_calib_hardabi.a
 )
