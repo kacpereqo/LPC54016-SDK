@@ -35,4 +35,4 @@ target_link_libraries(LPC54016-SDK PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/MCUXpresso/libpower_hardabi.a
     ${CMAKE_CURRENT_SOURCE_DIR}/MCUXpresso/libpower_softabi.a
     ${CMAKE_CURRENT_SOURCE_DIR}/MCUXpresso/libfro_calib_hardabi.a
-)`
+)
