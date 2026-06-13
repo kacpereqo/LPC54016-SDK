@@ -1,5 +1,3 @@
-`
-
 add_compile_options("-DMSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))")
 
 file(GLOB_RECURSE LPC54016_SOURCES
