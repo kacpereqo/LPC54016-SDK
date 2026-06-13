@@ -9,10 +9,10 @@ file(GLOB_RECURSE LPC54016_SOURCES
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers/*.c
 )
 
-add_library(LPC54016 ${LPC54016_SOURCES} STATIC)
+add_library(LPC54016-SDK ${LPC54016_SOURCES} STATIC)
 
 
-target_compile_definitions(LPC54016 PUBLIC
+target_compile_definitions(LPC54016-SDK PUBLIC
     DEBUG
     CODE_RED
     __NEWLIB__
@@ -24,14 +24,14 @@ target_compile_definitions(LPC54016 PUBLIC
     SERIAL_PORT_TYPE_UART=1
 )
 
-target_include_directories(LPC54016 PUBLIC
+target_include_directories(LPC54016-SDK PUBLIC
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso
 )
 
-target_link_libraries(LPC54016 PUBLIC
+target_link_libraries(LPC54016-SDK PUBLIC
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_hardabi.a
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_softabi.a
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libfro_calib_hardabi.a
