@@ -1,0 +1,36 @@
+add_library(LPC54016 STATIC)
+
+target_compile_definitions(LPC54016 PUBLIC
+    DEBUG
+    CODE_RED
+    __NEWLIB__
+    CPU_LPC54016JBD100
+    CORE_M4
+    __FPU_PRESENT=1
+    CPP_USE_HEAP
+    MTB_BUFFER_SIZE=256
+    SERIAL_PORT_TYPE_UART=1
+    MSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))
+)
+
+file(GLOB_RECURSE LPC54016_SOURCES
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS/*.c
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device/*.c
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device/*.S
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers/*.c
+)
+
+target_sources(LPC54016 PRIVATE ${LPC54016_SOURCES})
+
+target_include_directories(LPC54016 PUBLIC
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/device
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso
+)
+
+target_link_libraries(LPC54016 PUBLIC
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_hardabi.a
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libpower_softabi.a
+    ${CMAKE_SOURCE_DIR}/LPC54016-SDK/MCUXpresso/libfro_calib_hardabi.a
+)
