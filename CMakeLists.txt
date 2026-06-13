@@ -1,4 +1,3 @@
-add_library(LPC54016 STATIC)
 
 target_compile_definitions(LPC54016 PUBLIC
     DEBUG
@@ -21,7 +20,7 @@ file(GLOB_RECURSE LPC54016_SOURCES
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/drivers/*.c
 )
 
-target_sources(LPC54016 PRIVATE ${LPC54016_SOURCES})
+add_library(LPC54016 ${LPC54016_SOURCES} STATIC)
 
 target_include_directories(LPC54016 PUBLIC
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS
