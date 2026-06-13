@@ -10,8 +10,9 @@ target_compile_definitions(LPC54016 PUBLIC
     CPP_USE_HEAP
     MTB_BUFFER_SIZE=256
     SERIAL_PORT_TYPE_UART=1
-    MSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))
 )
+
+add_compile_options("-DMSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))")
 
 file(GLOB_RECURSE LPC54016_SOURCES
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS/*.c
