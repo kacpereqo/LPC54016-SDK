@@ -1,15 +1,4 @@
 
-target_compile_definitions(LPC54016 PUBLIC
-    DEBUG
-    CODE_RED
-    __NEWLIB__
-    CPU_LPC54016JBD100
-    CORE_M4
-    __FPU_PRESENT=1
-    CPP_USE_HEAP
-    MTB_BUFFER_SIZE=256
-    SERIAL_PORT_TYPE_UART=1
-)
 
 add_compile_options("-DMSDK_REG_SECURE_ADDR(x)=((uint32_t)(x))")
 
@@ -21,6 +10,19 @@ file(GLOB_RECURSE LPC54016_SOURCES
 )
 
 add_library(LPC54016 ${LPC54016_SOURCES} STATIC)
+
+
+target_compile_definitions(LPC54016 PUBLIC
+    DEBUG
+    CODE_RED
+    __NEWLIB__
+    CPU_LPC54016JBD100
+    CORE_M4
+    __FPU_PRESENT=1
+    CPP_USE_HEAP
+    MTB_BUFFER_SIZE=256
+    SERIAL_PORT_TYPE_UART=1
+)
 
 target_include_directories(LPC54016 PUBLIC
     ${CMAKE_SOURCE_DIR}/LPC54016-SDK/CMSIS
